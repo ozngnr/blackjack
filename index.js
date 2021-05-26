@@ -25,6 +25,7 @@ function startGame() {
   sum = firstCard + secondCard
   renderGame()
 }
+
 function renderGame() {
   const cardsStr = cards.join(" - ")
   cardsEl.textContent = "Cards: " + cardsStr
@@ -43,10 +44,12 @@ function renderGame() {
 }
 
 function newCard() {
-  let newCard = getRandomCard()
-  sum += newCard
-  cards.push(newCard)
-  renderGame();
+  if (isPlaying && !hasBlackjack) {
+    let newCard = getRandomCard()
+    sum += newCard
+    cards.push(newCard)
+    renderGame()
+  }
 }
 
 const startBtn = document.getElementById('start-btn')
